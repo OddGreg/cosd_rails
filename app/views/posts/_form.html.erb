@@ -1,0 +1,18 @@
+<%= simple_form_for(@post) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :user %>
+    <%= f.association :story %>
+    <%= f.input :title %>
+    <%= f.input :body %>
+    <%= f.input :image %>
+    <%= f.input :slug %>
+    <%= f.input :visible %>
+    <%= f.input :poster_ip %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
