@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :stories
   has_many :posts
   has_and_belongs_to_many :groups
+  has_and_belongs_to_many :roles
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
