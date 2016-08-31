@@ -1,4 +1,5 @@
 ActiveAdmin.register Character do
+  permit_params :name, :biography, :avatar, :signature, :title, :tag_line, :slug, :active
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
