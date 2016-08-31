@@ -1,29 +1,32 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Group -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Group %></h1>
+</div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @group.title %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:title) %></dt>
+      <dd><pre class="prettyprint"><%= @group.title %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:description) %></dt>
+      <dd><pre class="prettyprint"><%= @group.description %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:slug) %></dt>
+      <dd><pre class="prettyprint"><%= @group.slug %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:image) %></dt>
+      <dd><pre class="prettyprint"><%= @group.image %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:enabled) %></dt>
+      <dd><pre class="prettyprint"><%= @group.enabled %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @group.description %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              groups_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_group_path(@group), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              group_path(@group),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Slug:</strong>
-  <%= @group.slug %>
-</p>
-
-<p>
-  <strong>Image:</strong>
-  <%= @group.image %>
-</p>
-
-<p>
-  <strong>Enabled:</strong>
-  <%= @group.enabled %>
-</p>
-
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>
