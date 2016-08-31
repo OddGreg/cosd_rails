@@ -1,0 +1,20 @@
+<%= simple_form_for(@character) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :user %>
+    <%= f.association :group %>
+    <%= f.input :name %>
+    <%= f.input :biography %>
+    <%= f.input :avatar %>
+    <%= f.input :signature %>
+    <%= f.input :title %>
+    <%= f.input :tag_line %>
+    <%= f.input :slug %>
+    <%= f.input :active %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
