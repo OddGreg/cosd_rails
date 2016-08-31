@@ -1,35 +1,44 @@
-<h1>Listing sections</h1>
-
-<table>
+<%- model_class = Section -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Section %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Category</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Image</th>
-      <th>Slug</th>
-      <th>Visible</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:title) %></th>
+      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%= model_class.human_attribute_name(:image) %></th>
+      <th><%= model_class.human_attribute_name(:slug) %></th>
+      <th><%= model_class.human_attribute_name(:visible) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @sections.each do |section| %>
       <tr>
-        <td><%= section.category %></td>
+        <td><%= section.id %></td>
         <td><%= section.title %></td>
         <td><%= section.description %></td>
         <td><%= section.image %></td>
         <td><%= section.slug %></td>
         <td><%= section.visible %></td>
-        <td><%= link_to 'Show', section %></td>
-        <td><%= link_to 'Edit', edit_section_path(section) %></td>
-        <td><%= link_to 'Destroy', section, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l section.created_at, format: :long %></td>
+        <td>
+          <%= link_to section_path(section), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to section_path(section), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Section', new_section_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_section_path,
+            :class => 'btn btn-primary' %>
