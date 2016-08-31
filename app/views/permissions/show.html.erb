@@ -1,34 +1,30 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Permissions -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Permissions %></h1>
+</div>
 
-<p>
-  <strong>Group:</strong>
-  <%= @permission.group %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:title) %></dt>
+      <dd><pre class="prettyprint"><%= @permissions.title %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:active) %></dt>
+      <dd><pre class="prettyprint"><%= @permissions.active %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:description) %></dt>
+      <dd><pre class="prettyprint"><%= @permissions.description %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:slug) %></dt>
+      <dd><pre class="prettyprint"><%= @permissions.slug %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Role:</strong>
-  <%= @permission.role %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              permissions_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_permissions_path(@permissions), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              permissions_path(@permissions),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @permission.title %>
-</p>
-
-<p>
-  <strong>Active:</strong>
-  <%= @permission.active %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @permission.description %>
-</p>
-
-<p>
-  <strong>Slug:</strong>
-  <%= @permission.slug %>
-</p>
-
-<%= link_to 'Edit', edit_permission_path(@permission) %> |
-<%= link_to 'Back', permissions_path %>
