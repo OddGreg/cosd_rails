@@ -1,20 +1,58 @@
-<%= simple_form_for(@character) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.association :user %>
-    <%= f.association :group %>
-    <%= f.input :name %>
-    <%= f.input :biography %>
-    <%= f.input :avatar %>
-    <%= f.input :signature %>
-    <%= f.input :title %>
-    <%= f.input :tag_line %>
-    <%= f.input :slug %>
-    <%= f.input :active %>
+<%= form_for @character, :html => { :class => 'form-horizontal form-model' } do |f| %>
+  <div class="form-group">
+    <%= f.label :name, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :name, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :biography, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_area :biography, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :avatar, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :avatar, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :signature, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_area :signature, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :title, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :title, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :tag_line, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :tag_line, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :slug, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :slug, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :active, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.check_box :active, :class => 'text-field form-control' %>
+    </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  characters_path, :class => 'btn btn-default' %>
+    </div>
   </div>
 <% end %>
